@@ -1,0 +1,22 @@
+{
+  "name": "harsh-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "discord.js": "^12.3.1",
+    "snekfetch": "^4.0.4",
+    "superagent": "^6.1.0",
+    "urban": "^0.3.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Discord",
+    "Bot"
+  ],
+  "author": "Harsh Singh",
+  "license": "MIT"
+}
