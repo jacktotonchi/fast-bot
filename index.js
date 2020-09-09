@@ -48,4 +48,4 @@ client.on('message', async message => {
 
 
 
-client.login('NzE3OTM1MjY3ODY4MTgwNTAx.XthjUg.7xJBhKciA5IEjPNIkanro3A-Nhw')
+client.login('//your token here.)
