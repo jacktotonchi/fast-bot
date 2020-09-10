@@ -116,4 +116,5 @@ client.on('message', (message) => {
     }
 })
 
-client.login('NzE3OTM1MjY3ODY4MTgwNTAx.XthjUg.ODHKAMdWOOzhx6RVgTl3fBMJKSU')
+
+client.login('botsettings.token')
