@@ -10,10 +10,10 @@ module.exports.run = async (client, message, args) => {
    const user = message.author;
 
    const embed = new Discord.MessageEmbed()
-       .setTitle(`${user.username}`)
+        .setColor('#41FF7D')
+       .setTitle(`${user}`)
        .setThumbnail(user.displayAvatarURL)
        .addField('Username', user.username, true)
-       .addField('Nickname', member.username, true)
        .addField('ID', user.id, true)
        .addField('Account Created', user.createdAt.toDateString(), true)
        .addField('Joined Server', member.joinedAt.toDateString(), true)

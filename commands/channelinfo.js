@@ -13,7 +13,7 @@ module.exports.run = async (client, message, args) => {
    }
   
    const channelEmbed = new Discord.MessageEmbed()
-           .setColor(0x00AE86)
+           .setColor('#00E4FF')
            .setThumbnail(message.guild.iconURL)
            .setTitle('Channel Info')
            .addField(':arrow_right: Name', channel.type === 'dm' ? `<@${channel.recipient.username}>` : channel.name, true)

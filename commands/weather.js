@@ -17,6 +17,7 @@ module.exports.run = async (client, message, args) => {
     var location = result[0].location;
 
     const weatherInfo = new Discord.MessageEmbed()
+    .setColor('#41FF7D')
     .setDescription(`${current.skytext}`)
     .setAuthor(`Weather forcast for ${current.observationpoint}`)
     .setThumbnail(current.imageUrl)

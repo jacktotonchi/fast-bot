@@ -5,9 +5,15 @@
   "main": "index.js",
   "dependencies": {
     "discord.js": "^12.3.1",
+    "mongoose": "^5.10.4",
+    "ms": "^2.1.2",
+    "pastemyst-js": "^1.0.2",
     "snekfetch": "^4.0.4",
+    "spamnya": "^1.1.1",
     "superagent": "^6.1.0",
-    "urban": "^0.3.2"
+    "trello": "^0.10.0",
+    "urban": "^0.3.2",
+    "weather-js": "^2.0.0"
   },
   "devDependencies": {},
   "scripts": {

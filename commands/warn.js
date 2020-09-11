@@ -1,4 +1,7 @@
 const { Client, Collection, MessageEmbed} = require('discord.js')
+const fs = require('fs')
+const ms = require('ms')
+
 
 module.exports.config = { 
     name: "warn",
@@ -6,16 +9,12 @@ module.exports.config = {
 }
 
 module.exports.run = async (client, message, args) => {
-    const target = message.mentions.users.first()
+    if (!message.member.hasPermission("KICK_MEMBERS")) message.channel.send('Acess denied');
 
-    if (!target) {
-       message.reply('User not found.')
-       return;
-    }
+    let wUser = message.guild.member(message.mentions.users.first()) || message.guild.members.cache.get(args[0]);
 
-    args.shift()
+    if (!wUser) return message.channel.send('User invalid!')
 
-    const guildId = message.guild.id;
-    const userId = message.member.userId;
-    const reason = args.join(' ')
+    let reason = args.join(" ").slice(22);
+    if (!reason) return message.channel.send('Please provide a reason!')
 }

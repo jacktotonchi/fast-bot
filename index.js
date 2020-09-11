@@ -3,6 +3,8 @@ const Discord = require('discord.js')
 const client = new Discord.Client()
 const spam = require('spamnya')
 
+const botsettings = require(`./botsettings.json`)
+
 const prefix = '!'
 
 const fs = require('fs')
@@ -20,7 +22,7 @@ fs.readdir('./commands/', (err, files) => {
         let pullcmd = require(`./commands/${file}`);
         client.commands.set(pullcmd.config.name, pullcmd);
         pullcmd.config.aliases.forEach(alias => {
-            client.aliases.set(alias, pullcmd.config.name);
+            client.aliases.set(alias, pullcmd.config.aliases);
         })
     })
 })
@@ -38,9 +40,10 @@ client.on('ready', () => {
 })
 
 client.on('message', async message => {
+    if (!message.content.startsWith(prefix)) return;
+
     if (message.channel.type === 'dm') {
         message.author.send('Imagine being so lonely that you have to DM a bot.')
-        return;
     }
 
     let messageArray = message.content.split(" ");
@@ -50,8 +53,9 @@ client.on('message', async message => {
     let commandFile = client.commands.get(cmd.slice(prefix.length)) || client.commands.get(cmd.slice(prefix.length));
 
     if (commandFile) commandFile.run(client, message, args);
+})
 
-
+client.on('message', message => {
     let blacklisted = ['nigger', 'nigga', 'faggot', 'fagget','fagot', 'faget', 'faggot']
 
     let foundInText = false;
@@ -63,7 +67,6 @@ client.on('message', async message => {
     if (foundInText) {
 
         if (message.author.id != 717935267868180501) {
-            message.author.send('Please watch your language!');
             message.delete();
             message.channel.send(`A blacklisted word was detected by ${message.author}! The message was \"${message.content}\"`)
         }
@@ -80,8 +83,9 @@ client.on('messageUpdate', (oldMessage, newMessage) => {
         let embed = new Discord.MessageEmbed()
             .setTitle("Ghost ping detected!")
             .addField('**Author**', oldMessage.author)
-            .addField("**Old Messages**", oldMessage, true)
-            .addField("**New Messages**", newMessage, true)
+            .addField("**Origional Message**", oldMessage, true)
+            .addField("**New Message**", newMessage, true)
+            .addField('**Type**', 'Sender sent a message. Then proceeded to edit the ping out of the message.')
             .setTimestamp();
         oldMessage.channel.send(embed)
     }
@@ -93,13 +97,12 @@ client.on('messageDelete', message => {
     if (message.mentions.members.first() && message.mentions.members.first().id != message.author.id) {
         let embed = new Discord.MessageEmbed()
             .setTitle("Ghost ping detected!")
-            .addField('**Author**', message.author)
-            .addField("**Content**", message.content)
+            .addField('**Sender**', message.author)
+            .addField("**Message**", message.content)
+            .addField('**Type**', 'Sender sent a message, and then proceeded to delete it thereafter.')
             .setTimestamp();
         message.channel.send(embed)
     }
-
-    if (!message.content.startsWith(prefix)) return;
 })
 
 client.on('message', (message) => {
@@ -107,14 +110,15 @@ client.on('message', (message) => {
     spam.log(message, 50)
 
     if(spam.tooQuick(3, 1000) && message.author.id != 717935267868180501){
+        message.delete()
+        const serverMessage = new Discord.MessageEmbed()
+        .setTitle('**Spamming Detected!**')
+        .setDescription(`Spam deteced in ${message.channel.name} by ${message.author}`)
+        .addField('**Message**', `${message.content}`)
+        const messageToDelete = message.channel.send(serverMessage);
         message.author.send('Talking wayyy to fast bud. Chill out.')
-    }
-
-    if(spam.sameMessages(3, 60000) && message.author.id != 717935267868180501){
-      // when someone send 3 identical chats within a minute
-      message.author.send('Do not spam on this server!')
     }
 })
 
 
-client.login('botsettings.token')
+client.login(botsettings.token)

@@ -18,6 +18,7 @@ module.exports.run = async (client, message, args) => {
 
       console.log(json);
       const def = new MessageEmbed()
+          .setColor('#FBFF00')
           .setTitle(json.word)
           .setDescription(json.definition)
           .addField('Upvotes', json.thumbs_up, true)
