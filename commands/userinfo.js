@@ -1,4 +1,5 @@
 const Discord = require('discord.js')
+const moment = require('moment')
 
 module.exports.config = { 
     name: "userinfo",
@@ -6,20 +7,21 @@ module.exports.config = {
 }
 
 module.exports.run = async (client, message, args) => {
-   const member = message.mentions.members.first() || message.guild.members.get(args[0]) || message.member;
-   const user = message.author;
+    
+    if (!args[0]) message.channel.send('Please specify a user!')
+    else {
+        const member = message.mentions.members.last() || message.guild.members.cache.get(target) || message.member;
 
-   const embed = new Discord.MessageEmbed()
-        .setColor('#41FF7D')
-       .setTitle(`${user}`)
-       .setThumbnail(user.displayAvatarURL)
-       .addField('Username', user.username, true)
-       .addField('ID', user.id, true)
-       .addField('Account Created', user.createdAt.toDateString(), true)
-       .addField('Joined Server', member.joinedAt.toDateString(), true)
-       .setFooter('User Info', user.displayAvatarURL);
-
-   message.channel.send(embed);
-
-   if (!args[0]) message.channel.send('Please specify a user!')
+        const userInfoEmbed = new Discord.MessageEmbed()
+        .setColor('#00B6FF')
+        .setThumbnail(`${member.user.displayAvatarURL({dynamic: true, size: 512})}`)
+        .setTitle(`Info for "${member.user.username}"`)
+        .addField('Discord ID', `${member.id}`)
+        .addField('Date created', `${moment(member.user.createdTimestamp)}`)
+        .addField('Status', `${member.user.presence.status}`)
+        .addField('Game', `${member.user.presence.activities || 'None'}`)
+        .addField('Server Join Date', `${moment(member.joinedAt)}`)
+     
+        message.channel.send(userInfoEmbed);
+    }
 }

@@ -1,10 +1,11 @@
 const { Client, Collection, MessageEmbed} = require('discord.js')
 
+
 module.exports.config = { 
-    name: "help",
-    aliases: ['commands', 'cmds']
+    name: "warm",
+    aliases: []
 }
 
 module.exports.run = async (client, message, args) => {
-    message.channel.send('This command is broken >:(')
+    message.channel.send('Warmed em\' in the microwave.')
 }
