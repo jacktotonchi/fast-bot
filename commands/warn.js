@@ -1,44 +1,26 @@
 const { Client, Collection, MessageEmbed} = require('discord.js')
-const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/Warnings')
-// const fs = require('fs')
-// let warns = JSON.parse(fs.readFileSync("./warnings.json", "utf8"));
 
 
-module.exports.config = { 
+
+module.exports.config = {
     name: "warn",
     aliases: []
 }
 
-// module.exports = mongoose.model("Warn", warnSchema);
-
 module.exports.run = async (client, message, args) => {
-    console.log('test')
-    // if (!message.member.hasPermission("MANAGE_MEMBERS")) return message.channel.send('Access Denied!');
+    if (!message.member.hasPermission("MANAGE_SERVER")) return message.channel.send('Access Denied!')  
+    else {
+        const user = message.mentions.users.first()
+        let reason = args.slice(1).join(' ')
+        if (!reason) return message.channel.send('Please specify a reason!')
 
-    // let wUser = message.guild.member(message.mentions.users.first()) || message.guild.members.cache.get(args[0])
-    // if (!wUser) return message.reply('User not found!')
-    
-    // let reason = args.join(" ").slice(22);
+        let warnings = db.get(`warnings_${message.guild.id}_${user.id}`);
 
-    // if (!warns[wUser.id]) warns[wUser.id] = {
-    //     warns: 0
-    // };
-
-    // warns[wUser.id].warns++;
-
-    // fs.writeFile("./warnings.json", JSON.stringify(warns), (err) => {
-    //     if (err) console.log(err)
-    // })
-
-    // let warnEmbed = new MessageEmbed()
-    // .setAuthor(`${message.author.username} warned <@${wUser.id}>`)
-    // .setColor('#8C0000')
-    // .addField('**Warned User**', `<@${wUser.id}>`)
-    // .addField('**Warned in**', message.channel)
-    // .addField('**Number of Warnings**', warns[wUser.id].warns)
-    // .addField('**Reason**', reason)
-    // .setTimestamp()
-
-    // message.channel.send(warnEmbed);
+        if (warnings === null) {
+            db.set(`warnings_${message.guild.id}_${user.id}`, 1)
+        }
+        else if (warnings !== null) {
+            db.add(`warnings_${message.guild.id}_${user.id}`, 1)
+        }
+    }
 }

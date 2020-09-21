@@ -14,15 +14,8 @@ const { message } = require('spamnya')
 client.commands = new Collection()
 client.aliases = new Collection();
 
-const warn = require('./commands/warn')
-const mongoose = require('mongoose')
-
-
-mongoose.connection.once('open', function() {
-    console.log("Connected to DB.")
-}).on('error', function(error) {
-    console.log(error)
-})
+let cooldown = new Set()
+let cdseconds = 5;
 
 fs.readdir('./commands/', (err, files) => {
     if (err) console.log(err);
@@ -55,7 +48,11 @@ client.on('ready', () => {
 })
 
 client.on('message', async message => {
-    if (!message.content.startsWith(prefix)) return;
+    if (!message.content.startsWith(prefix)) return
+
+    if (cooldown.has(message.author.id)) return
+    
+    cooldown.add(message.author.id);
 
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
@@ -64,6 +61,10 @@ client.on('message', async message => {
     let commandFile = client.commands.get(cmd.slice(prefix.length)) || client.commands.get(cmd.slice(prefix.length));
 
     if (commandFile) commandFile.run(client, message, args);
+
+    setTimeout(() => {
+        cooldown.delete(message.author.id)
+    }, cdseconds + 10000)
 })
 
 client.on('message', message => {
