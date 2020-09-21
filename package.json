@@ -12,7 +12,7 @@
     "discord.js": "^12.3.1",
     "fs": "0.0.1-security",
     "moment": "^2.28.0",
-    "mongoose": "^5.10.4",
+    "mongoose": "^5.10.6",
     "ms": "^2.1.2",
     "owlbot-js": "^2.0.0",
     "pastebin": "0.0.1",

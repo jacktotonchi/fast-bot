@@ -14,7 +14,15 @@ const { message } = require('spamnya')
 client.commands = new Collection()
 client.aliases = new Collection();
 
+const warn = require('./commands/warn')
+const mongoose = require('mongoose')
 
+
+mongoose.connection.once('open', function() {
+    console.log("Connected to DB.")
+}).on('error', function(error) {
+    console.log(error)
+})
 
 fs.readdir('./commands/', (err, files) => {
     if (err) console.log(err);
@@ -37,7 +45,7 @@ client.on('guildMemberAdd', member => {
 
     if (!channel) return;
 
-    member.message('Welcome to **Jonas Tyroller\'s** official Discord Server! We hope you have a great time here 😊')
+    member.send('Welcome to **Jonas Tyroller\'s** official Discord Server! We hope you have a great time here 😊')
     channel.send(`**Welcome to our Server!**, ${member}!, Make sure to read the <#428189176559828992>, grab some <#615268721199677480>, and feel free to introduce yourself to others here!`)
 })
 
@@ -60,7 +68,7 @@ client.on('message', async message => {
 
 client.on('message', message => {
 
-    if (message.content.length > 750 && message.author.id != client.id) {
+    if (message.content.length > 1000 && message.author.id != client.id) {
         pastemyst.createPasteMyst(message, 'never', 'autodetect')
         .then((pasteMystInfo) => {
            message.channel.send(`Codeblock pasted by ${message.author}! - ${pasteMystInfo.link}`);

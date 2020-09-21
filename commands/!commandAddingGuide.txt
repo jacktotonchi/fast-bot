@@ -7,7 +7,7 @@ module.exports.config = {
     aliases: ['Words which are similar to the command itself, and can be used to call the command (for example, ddg and duckduckgo)']
 }
 
-module.exports.run = async (/*Parameters you want to fill out. If you just want it to reply as a message, just do -> */client, message args) => {
+module.exports.run = async (client, message args) => {
 
    //here you can have it do whatever you want it to. If you just want it to return a message, then just fill in your message below.
     message.channel.send("Your message");
