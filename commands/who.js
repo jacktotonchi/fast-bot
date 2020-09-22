@@ -2,17 +2,17 @@ const { Client, Collection, MessageEmbed} = require('discord.js')
 
 module.exports.config = { 
     name: "who",
-    aliases: ['ball', '8b']
+    aliases: []
 }
 
 module.exports.run = async (client, message, args) => {
    if(!args[0]) message.reply('Please ask me a question.');
 
     else {
-      let eightball = [
-      'Jonas.',
-      'Yän',
-      'Gandhi',
+      let rand = [
+      'Guray.',
+      'Aqua',
+      'CodeMyst',
       'Your cousin.',
       'Your cousin\'s uncle\'s neighbour\'s grandfather\'s cat\'s doll',
       'Kim.',
@@ -23,13 +23,13 @@ module.exports.run = async (client, message, args) => {
       'You.',
       'Hubert Blaine Wolfeschlegelsteinhausenbergerdorff Sr.',
       'Daddy.',
-      'Squid.',
+      'Dutchy',
       'The senate members of Tuvalu.',
       'Rhoshandiatellyneshiaunneveshenk Koyaanisquatsiuth Williams',
-      'Shelly.',
+      'Harsh.',
       'Not you.',
       'Juan Joya Borja',
-      'Jonas\'s teddy bear.',
+      'Snowy',
       'Me.',
       'Steven Jobbers.',
       'My imaginary friend',
@@ -40,7 +40,7 @@ module.exports.run = async (client, message, args) => {
       'A game developer.',
       'Issac Newton',
       ];
-      let index = (Math.floor(Math.random() * Math.floor(eightball.length)));
-      message.channel.send(eightball[index]);
+      let index = (Math.floor(Math.random() * Math.floor(rand.length)));
+      message.channel.send(rand[index]);
    }
 }

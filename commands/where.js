@@ -2,14 +2,14 @@ const { Client, Collection, MessageEmbed} = require('discord.js')
 
 module.exports.config = { 
     name: "where",
-    aliases: ['ball', '8b']
+    aliases: []
 }
 
 module.exports.run = async (client, message, args) => {
    if(!args[0]) message.reply('Please ask me a question.');
 
     else {
-      let eightball = [
+      let rand = [
       'Inside you.',
       'Paris.',
       'London.',
@@ -40,7 +40,7 @@ module.exports.run = async (client, message, args) => {
       'Inside your liver',
       'In your mom\'s basement.',
       ];
-      let index = (Math.floor(Math.random() * Math.floor(eightball.length)));
-      message.channel.send(eightball[index]);
+      let index = (Math.floor(Math.random() * Math.floor(rand.length)));
+      message.channel.send(rand[index]);
    }
 }
