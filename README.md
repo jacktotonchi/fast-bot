@@ -4,7 +4,7 @@
  
  To learn how to set this up, visit the official [website]
  
-(https://img.shields.io/github/license/harshhh-dev/fast-bot)](LICENSE) [![GitHub Workflow Status]
+![License(https://img.shields.io/github/license/harshhh-dev/fast-bot)](LICENSE)
  
  # Important 
  
