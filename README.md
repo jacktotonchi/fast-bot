@@ -14,9 +14,9 @@
  
  # Important 
  
- [Code of Conduct]
+ -  [Code of Conduct]
  
- [Contributing]
+ -  [Contributing]
  
  [Code of Conduct]: https://github.com/harshhh-dev/fast-bot/blob/master/CODE_OF_CONDUCT.md
  [Contributing]: https://github.com/harshhh-dev/fast-bot/blob/master/commands/CONTRIBUTING.md
