@@ -5,7 +5,10 @@
  To learn how to set this up, visit the official [website]
  
 ![License](https://img.shields.io/github/license/harshhh-dev/fast-bot?style=for-the-badge)
+
 ![Discord](https://img.shields.io/discord/742510158269120594?style=for-the-badge)
+
+![Stars](https://img.shields.io/github/stars/harshhh-dev/fast-bot?style=for-the-badge)
  
  # Important 
  
