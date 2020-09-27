@@ -4,6 +4,8 @@
  
  To learn how to set this up, visit the official [website]
  
+ https://img.shields.io/apm/l/LICENSE?style=for-the-badge
+ 
  # Important 
  
  [Code of Conduct]
