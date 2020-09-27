@@ -4,7 +4,7 @@
  
  To learn how to set this up, visit the official [website]
  
-![License](https://img.shields.io/github/license/harshhh-dev/fast-bot)
+![License](https://img.shields.io/github/license/harshhh-dev/fast-bot?style=for-the-badge)
  
  # Important 
  
