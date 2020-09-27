@@ -4,7 +4,7 @@
  
  To learn how to set this up, visit the official [website]
  
- ![License](https://img.shields.io/apm/l/LICENSE?style=for-the-badge)
+ ![License](https://img.shields.io/fast-bot/LICENSE?style=for-the-badge)
  
  # Important 
  
