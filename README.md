@@ -2,7 +2,14 @@
  
  Fast Bot is a Discord Bot made as a two-week project. This bot has dozens of fun commands insuring a better user experience overall. 
  
- List of all the current commands
+ To learn how to set this up, visit the official [website]
+ 
+ # Important 
+ 
+ [Code of Conduct]
+ [Contributing]
+ 
+ # List of all the current commands
  
  ### 8-ball
  ### Advice
@@ -43,3 +50,9 @@
  ### Where 
  ### Who
  ### YouTube
+
+
+# List of the current features
+
+### Ghost Ping Detections
+### Blacklisted word detection
