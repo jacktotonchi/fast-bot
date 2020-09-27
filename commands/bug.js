@@ -3,7 +3,7 @@ const Discord = require('discord.js')
 
 module.exports.config = { 
     name: "bug",
-    aliases: []
+    aliases: ['error', 'issue']
 }
 
 module.exports.run = async (client, message, args) => {

@@ -2,30 +2,31 @@ const { Client, Collection, MessageEmbed} = require('discord.js')
 
 module.exports.config = { 
     name: "8ball",
-    aliases: ['ball', '8b']
+    aliases: ['will', '8b']
 }
 
 module.exports.run = async (client, message, args) => {
-   if(!args[0]) message.reply('Please ask me a question.');
-
-    else {
+   if(!args[0]) {
+      message.react('👎')
+      message.channel.send('Please ask me a question.');
+   }  else {
       let eightball = [
-      'It is certain.',
+      'Certainly.',
       'It is decidedly so.',
       'Without a doubt.',
       'Yes definitely.',
-      'You may rely on it.',
+      'Probably.',
       'As I see it, yes.',
       'Most likely.',
       'Outlook good.',
       'Yes.',
       'Signs point to yes.',
-      'Reply hazy try again.',
-      'Ask again later.',
-      'Better not tell you now.',
-      'Cannot predict now.',
-      'Concentrate and ask again.',
-      'Don\'t count on it.',
+      'Yes\'nt',
+      'No\'nt',
+      'Maybe.',
+      'My conscience says no.',
+      'Yep.',
+      'Nah.',
       'My reply is no.',
       'My sources say no.',
       'Outlook not so good.',
@@ -34,11 +35,11 @@ module.exports.run = async (client, message, args) => {
       'Maybe',
       'The answer is hiding inside you',
       'No.',
-      'Depends on the mood of the CS god',
-      'Hang on',
+      'Nope.',
+      'If it rains today, then yes.',
       'It\'s over',
       'It\'s just the beginning',
-      'Good Luck',
+      'Probably not.',
       ];
       let index = (Math.floor(Math.random() * Math.floor(eightball.length)));
       message.channel.send(eightball[index]);

@@ -2,7 +2,7 @@ const Discord = require('discord.js')
 
 module.exports.config = { 
     name: "ping",
-    aliases: []
+    aliases: ['lat', 'latency']
 }
 
 module.exports.run = async (client, message, args) => {

@@ -8,7 +8,9 @@ module.exports.config = {
 
 module.exports.run = async (client, message, args) => {
     
-    if (!args[0]) message.channel.send('Please specify a user!')
+    if (!args[0]) {
+        message.channel.send('Please specify a user!')
+    }
     else {
         const member = message.mentions.members.last() || message.guild.members.cache.get(target) || message.member;
 

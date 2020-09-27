@@ -2,15 +2,19 @@ const { Client, Collection, MessageEmbed} = require('discord.js')
 
 module.exports.config = { 
     name: "clear",
-    aliases: []
+    aliases: ['del', 'delete']
 }
 
 module.exports.run = async (client, message, args) => {
-    if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply('Permission denied!')
+    if (!message.member.hasPermission("MANAGE_MESSAGES")) {
+        return message.reply('Permission denied!')
+    }
 
-    if (isNaN(args[0]) || parseInt(args[0]) <= 0) return message.reply('Please enter a valid number!')
+    if (isNaN(args[0]) || parseInt(args[0]) <= 0) {
+        message.react('👎')
+        return message.reply('Please enter a valid number!')
+    }
 
-    
     if (message.mentions.user) {
         let deleteAmountUser;
 

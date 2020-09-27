@@ -2,7 +2,7 @@ const { Client, Collection, MessageEmbed} = require('discord.js')
 
 module.exports.config = { 
     name: "youtube",
-    aliases: ['ball', '8b']
+    aliases: ['yt', 'utube']
 }
 
 module.exports.run = async (client, message, args) => {
@@ -10,6 +10,6 @@ module.exports.run = async (client, message, args) => {
    else {
        let search = args.join('+');
 
-       message.channel.send(`<https://www.youtube.com/results?search_query=${search}>`)
+       message.channel.send(`YouTube search results: <https://www.youtube.com/results?search_query=${search}>`)
    }
 }

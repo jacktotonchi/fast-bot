@@ -6,9 +6,11 @@ module.exports.config = {
 }
 
 module.exports.run = async (client, message, args) => {
-   if(!args[0]) message.reply('Please ask me a question.');
-
-    else {
+   if(!args[0]) {
+      message.react('👎')
+      message.channel.send('Please ask me a question.');
+   }
+   else {
       let eightball = [
       'Inside you.',
       'Paris.',

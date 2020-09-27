@@ -1,66 +1,63 @@
 const {Client, Collection, MessageEmbed} = require('discord.js')
 
-const pastemyst = require('pastemyst-js')
-
 const client = new Client()
 const spam = require('spamnya')
 
 const botsettings = require(`./botsettings.json`)
 
-const prefix = '!'
-
-const fs = require('fs')
-const { message } = require('spamnya')
-client.commands = new Collection()
-client.aliases = new Collection();
+const prefix =  botsettings.prefix;
 
 let cooldown = new Set()
-let cdseconds = 5;
+let cdseconds = botsettings.cooldown
 
-fs.readdir('./commands/', (err, files) => {
-    if (err) console.log(err);
+const fs = require("fs");
+client.commands = new Collection();
+client.aliases = new Collection();
 
-    let jsfile = files.filter(f => f.split(".").pop() === 'js');
+fs.readdir("./commands/", (err, files) => {
 
-    if (jsfile.length <= 0) return console.log("No commands found");
+    if(err) console.log(err)
 
-    jsfile.forEach((file, i) => { 
-        let pullcmd = require(`./commands/${file}`);
-        client.commands.set(pullcmd.config.name, pullcmd);
-        pullcmd.config.aliases.forEach(alias => {
-            client.aliases.set(alias, pullcmd.config.aliases);
-        })
-    })
-})
+    let jsfile = files.filter(f => f.split(".").pop() === "js") 
+    if(jsfile.length <= 0) {
+         return console.log("[LOGS] Couldn't Find Commands!");
+    }
+
+    jsfile.forEach((f, i) => {
+        let pull = require(`./commands/${f}`);
+        client.commands.set(pull.config.name, pull);  
+        pull.config.aliases.forEach(alias => {
+            client.aliases.set(alias, pull.config.name)
+        });
+    });
+});
 
 client.on('guildMemberAdd', member => {
-    const channel = member.guild.channels.cache.find(channel => channel.name === "tests");
+    const channel = member.guild.channels.cache.find(channel => channel.name === botsettings.welcomechannel);
 
     if (!channel) return;
 
-    member.send('Welcome to **Jonas Tyroller\'s** official Discord Server! We hope you have a great time here 😊')
-    channel.send(`**Welcome to our Server!**, ${member}!, Make sure to read the <#428189176559828992>, grab some <#615268721199677480>, and feel free to introduce yourself to others here!`)
+    member.send(botsettings.welcomemessage)
+    channel.send(botsettings.welcomemessagedm)
 })
 
 client.on('ready', () => {
     console.log('Bot is updated!')
-    client.user.setActivity('Keepin\' it Zimple...')
+    client.user.setActivity('[Bot status here!]')
 })
 
 client.on('message', async message => {
     if (!message.content.startsWith(prefix)) return
-
-    if (cooldown.has(message.author.id)) return
-    
-    cooldown.add(message.author.id);
-
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
     let args = messageArray.slice(1);
 
-    let commandFile = client.commands.get(cmd.slice(prefix.length)) || client.commands.get(cmd.slice(prefix.length));
+    let commandfile = client.commands.get(cmd.slice(prefix.length)) || client.commands.get(client.aliases.get(cmd.slice(prefix.length)))
+    if(commandfile) commandfile.run(client,message,args)
 
-    if (commandFile) commandFile.run(client, message, args);
+    if (cooldown.has(message.author.id)) return
+    
+    cooldown.add(message.author.id);
 
     setTimeout(() => {
         cooldown.delete(message.author.id)
@@ -68,24 +65,9 @@ client.on('message', async message => {
 })
 
 client.on('message', message => {
-
-    if (message.content.length > 1000 && message.author.id != client.id) {
-        pastemyst.createPasteMyst(message, 'never', 'autodetect')
-        .then((pasteMystInfo) => {
-           message.channel.send(`Codeblock pasted by ${message.author}! - ${pasteMystInfo.link}`);
-           message.delete()
-        })
-    }
-
     if(message.content == 'prefix') message.reply(`My prefix is ${prefix}`)
 
-    if (message.channel.type === 'dm') {
-        
-        if (message.content == 'no') message.author.send('yes.')
-        
-    }
-
-    let blacklisted = ['nigger', 'nigga', 'faggot', 'fagget','fagot', 'faget', 'faggot']
+    let blacklisted = botsettings.blacklisted;
 
     let foundInText = false;
 
@@ -141,50 +123,6 @@ client.on('messageDelete', message => {
             .addField('**Type**', 'Sender sent a message, and then proceeded to delete it thereafter.')
             .setTimestamp();
         message.channel.send(embed)
-    }
-})
-
-client.on('message', (message) => {
-    //initiate the detector and log the chats with max 50 logged chats
-    // spam.log(message, 50)
-
-    if(spam.tooQuick(3, 1000) && message.author.id != client.id){
-        message.delete()
-        const serverMessage = new MessageEmbed()
-        .setTitle('**Spamming Detected!**')
-        .setDescription(`Spam deteced in ${message.channel.name} by ${message.author}`)
-        .addField('**Type**', '3 or more messages in a single second.')
-        .addField('**Message**', `${message.content}`)
-        const messageToDelete = message.channel.send(serverMessage);
-
-        setTimeout(function() {
-            messageToDelete.delete()
-        }, 1000)
-
-        message.author.send('Talking wayyy to fast bud. Chill out.')
-    }
-})
-
-client.on('messageReactionAdd', async (reaction, user) => {
-    const { message, emoji } = reaction;
-
-    if (message.channel.id == '742510158269120597') {
-        const member = await message.guild.members.cache.get(user.id);
-
-        if (!member.hasPermission("MANAGE_CHANNELS")) return;
-        else {
-            switch(emoji.name) {
-                case '✅':
-                    message.delete();
-                    message.channel.send('Your art was added to the art jam files.')
-                break;
-
-                case '🚫':
-                    message.delete();
-                    message.channel.send('Your art was not added to the art jam files.')
-                break;
-            }
-        }
     }
 })
 

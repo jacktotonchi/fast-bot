@@ -3,13 +3,16 @@ const weather = require('weather-js')
 
 module.exports.config = { 
   name: "weather",
-  aliases: []
+  aliases: ['temperature', 'wthr', 'forecast']
 }
 
 module.exports.run = async (client, message, args) => {
   weather.find({search: args.join(" "), degreeType: 'C'}, function (err, result) {
     if (err) return message.channel.send('Error. Couldn\'t fetch weather for requested location');
-    if (!args[0]) return message.channel.send('Please specify a location!');
+    if (!args[0]) {
+      message.react('👎')
+      return message.channel.send('Please specify a location!');
+    }
 
     if(result == undefined || result.lenght === 0) return message.channel.send('Couldn\'t find the location you mentioned!');
 

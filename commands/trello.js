@@ -2,7 +2,7 @@ const { Client, Collection, MessageEmbed} = require('discord.js')
 
 module.exports.config = { 
     name: "trello",
-    aliases: ['todo', 'tlo']
+    aliases: ['todo', 'trlo']
 }
 
 module.exports.run = async (client, message, args) => {

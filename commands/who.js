@@ -6,12 +6,14 @@ module.exports.config = {
 }
 
 module.exports.run = async (client, message, args) => {
-   if(!args[0]) message.reply('Please ask me a question.');
-
+   if(!args[0]) {
+      message.react('👎')
+      message.reply('Please ask me a question.');
+   }
     else {
       let eightball = [
-      'Jonas.',
-      'Yän',
+      'PewDiePie',
+      'Jogan Paul',
       'Gandhi',
       'Your cousin.',
       'Your cousin\'s uncle\'s neighbour\'s grandfather\'s cat\'s doll',
@@ -23,10 +25,10 @@ module.exports.run = async (client, message, args) => {
       'You.',
       'Hubert Blaine Wolfeschlegelsteinhausenbergerdorff Sr.',
       'Daddy.',
-      'Squid.',
+      'Cinderella.',
       'The senate members of Tuvalu.',
       'Rhoshandiatellyneshiaunneveshenk Koyaanisquatsiuth Williams',
-      'Shelly.',
+      'Your Kindergarten teacher.',
       'Not you.',
       'Juan Joya Borja',
       'Jonas\'s teddy bear.',
@@ -37,7 +39,7 @@ module.exports.run = async (client, message, args) => {
       'Your best friend',
       'The people who can spell pneumonoultramicroscopicsilicovolcanoconiosis correctly.',
       'Bustin Jieber.',
-      'A game developer.',
+      'A gamer.',
       'Issac Newton',
       ];
       let index = (Math.floor(Math.random() * Math.floor(eightball.length)));

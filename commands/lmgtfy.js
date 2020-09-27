@@ -2,11 +2,14 @@ const { Client, Collection, MessageEmbed} = require('discord.js')
 
 module.exports.config = { 
     name: "lmgtfy",
-    aliases: ['ball', '8b']
+    aliases: ['internet', 'lmgt']
 }
 
 module.exports.run = async (client, message, args) => {
-   if(!args[0]) message.reply('Please tell me what you would like to search.');
+   if(!args[0]) {
+        message.react('👎')
+        return message.channel.send('Please tell me what you would like to search.');
+   }
    else {
        let search = args.join('+');
 

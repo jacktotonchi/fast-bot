@@ -6,7 +6,7 @@ const Discord = require('discord.js')
 
 module.exports.config = { 
    name: "suggest",
-   aliases: []
+   aliases: ['feedback', 'sugg']
 }
 
 module.exports.run = async (client, message, args) => {

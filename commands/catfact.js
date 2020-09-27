@@ -3,7 +3,7 @@ const request = require('superagent')
 
 module.exports.config = { 
     name: "catfact",
-    aliases: []
+    aliases: ['kittyfact', 'kittenfact']
 }
 
 module.exports.run = async (client, message, args) => {

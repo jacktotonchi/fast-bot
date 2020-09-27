@@ -2,7 +2,7 @@ const Discord = require('discord.js')
 
 module.exports.config = { 
     name: "poll",
-    aliases: []
+    aliases: ['vote', 'pl']
 }
 
 module.exports.run = async (client, message, args) => {

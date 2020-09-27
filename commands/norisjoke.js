@@ -3,7 +3,7 @@ const jokes = require('discord-jokes')
 
 module.exports.config = { 
     name: "norisjoke",
-    aliases: []
+    aliases: ['chucknorisjoke', 'cnjoke']
 }
 
 module.exports.run = async (client, message, args) => {
