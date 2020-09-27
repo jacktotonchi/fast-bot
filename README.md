@@ -1,6 +1,6 @@
 # fast-bot
  
- Fast Bot is a Discord Bot made as a two-week projects. This bot has dozens of fun commands insuring a better user experience overall. 
+ Fast Bot is a Discord Bot made as a two-week project. This bot has dozens of fun commands insuring a better user experience overall. 
  
  List of all the current commands
  
