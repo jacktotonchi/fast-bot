@@ -4,13 +4,13 @@
  
  To learn how to set this up, visit the official [website]
  
-![License](https://img.shields.io/github/license/harshhh-dev/fast-bot?style=for-the-badge)
+![License](https://img.shields.io/github/license/harshhhdev/fast-bot?style=for-the-badge)
 
 ![Discord](https://img.shields.io/discord/742510158269120594?style=for-the-badge)
 
-![Stars](https://img.shields.io/github/stars/harshhh-dev/fast-bot?style=for-the-badge)
+![Stars](https://img.shields.io/github/stars/harshhhdev/fast-bot?style=for-the-badge)
 
-![Activity](https://img.shields.io/github/commit-activity/m/harshhh-dev/fast-bot?style=for-the-badge)
+![Activity](https://img.shields.io/github/commit-activity/m/harshhhdev/fast-bot?style=for-the-badge)
  
  # Important 
  
@@ -18,8 +18,8 @@
  
  -  [Contributing]
  
- [Code of Conduct]: https://github.com/harshhh-dev/fast-bot/blob/master/CODE_OF_CONDUCT.md
- [Contributing]: https://github.com/harshhh-dev/fast-bot/blob/master/commands/CONTRIBUTING.md
+ [Code of Conduct]: https://github.com/harshhhdev/fast-bot/blob/master/CODE_OF_CONDUCT.md
+ [Contributing]: https://github.com/harshhhdev/fast-bot/blob/master/commands/CONTRIBUTING.md
  
  # List of all the current commands
  
