@@ -2,8 +2,6 @@
  
  Fast Bot is a Discord Bot made as a two-week project. This bot has dozens of fun commands insuring a better user experience overall. 
  
- To learn how to set this up, visit the official [website]
- 
 ![License](https://img.shields.io/github/license/harshhhdev/fast-bot?style=for-the-badge)
 
 ![Discord](https://img.shields.io/discord/742510158269120594?style=for-the-badge)
