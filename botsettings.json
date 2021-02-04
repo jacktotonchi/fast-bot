@@ -1,9 +1,0 @@
-{ 
-   "token": "",
-   "prefix": "!",
-   "cooldown": "3",
-   "welcomechannel": "welcome channel name",
-   "welcomemessage": "insert a welcome message here!",
-   "welcomemessagedm": "insert a welcome messsage which gets sent to the user's DM here!",
-   "blacklisted":["bad", "words"]
-}
