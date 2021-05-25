@@ -1,5 +1,5 @@
 {
-	"prefix": "++",
+	"prefix": ".",
 	"owners": ["518432133111611397"],
 	"defaultPerms": ["SEND_MESSAGES"],
 	"mode": "dev"
